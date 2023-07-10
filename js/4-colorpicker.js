@@ -12,19 +12,24 @@ const colors = [
     { hex: '#ffeb3b', rgb: '255,235,59' },
     { hex: '#ff9800', rgb: '255,152,0' },
     { hex: '#795548', rgb: '121,85,72' },
-    { hex: '#6607d8b', rgb: '96,125,139' },
+    { hex: '#607d8b', rgb: '96,125,139' },
 ];
 
-const createColorCardsMarkup =
 
- <div class="color-card"> 
-            <div class="color-swatch" 
-            data-hex="#955014" 
-            data-rgb="149,80,20" 
-            style="background-color: #955014">
-        </div>
-        <div class="color-meta">
-            <p>HEX: #955014</p>
-            <p>RGB: 149,80,20</p>
-        </div>
-        </div>
+
+
+
+    // по цьому зразку треба створити карточки з динамічною зміною кольору,
+    // і щоб потім виводились дані (другий дів)
+    // робити це будем чере створенння шаблонних рядків
+//  <div class="color-card"> 
+//             <div class="color-swatch" 
+//             data-hex="#955014" 
+//             data-rgb="149,80,20" 
+//             style="background-color: #955014">
+//         </div>
+//         <div class="color-meta">
+//             <p>HEX: #955014</p>
+//             <p>RGB: 149,80,20</p>
+//         </div>
+//         </div>
