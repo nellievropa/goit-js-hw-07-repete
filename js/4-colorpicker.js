@@ -15,7 +15,9 @@ const colors = [
     { hex: '#607d8b', rgb: '96,125,139' },
 ];
 
-function createColorCardsMarup(colors) {
+
+
+function createColorCardsMarkup(colors) {
     const markup = colors.map(color => {
         return
         ` <div class="color-card"> 
@@ -31,10 +33,10 @@ function createColorCardsMarup(colors) {
         </div>
     `
     });
-    console.log(markup);
-
-  
+    console.log(markup);  
 }
+
+
 
 
 
