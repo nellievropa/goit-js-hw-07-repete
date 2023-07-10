@@ -16,10 +16,12 @@ const colors = [
 ];
 
 const paletteContainer = document.querySelector('.js-palette');
+// ця змінна зберігає результат виклику всієї 1-ї функції
 const cardsMarkup = createColorCardsMarkup(colors);
 
 paletteContainer.insertAdjacentHTML('beforeend', cardsMarkup);
 
+paletteContainer.addEventListener('click', onPaletteContainerClick);
 // console.log(createColorCardsMarkup(colors));
 
 function createColorCardsMarkup(colors) {
@@ -41,6 +43,26 @@ function createColorCardsMarkup(colors) {
     })
         .join('');
     
+}
+
+// ми хочем відстежити кліки тільки в колір
+function onPaletteContainerClick(event) {
+    // console.log(event.target);
+    // якщо це НЕ елемент color-swatch, то ми виходимо, інакше- виконується код
+    if (!event.target.classlist.contains('color-swatch')) {
+        return;
+    }
+
+    const swatchEl = event.target;
+    // swatchEl.classlist.add('is-active');
+    // родителя искать не очень практично, нужно искать предка
+    // в єтом поможет метод closest('.')
+    const parentColorCard = swatchEl.closest('.color-card');
+
+    parentColorCard.classlist.add('is-active');
+    
+    // console.log(event.targetdataset.hex);
+
 }
 
 
