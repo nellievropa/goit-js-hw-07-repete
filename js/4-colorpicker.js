@@ -15,7 +15,26 @@ const colors = [
     { hex: '#607d8b', rgb: '96,125,139' },
 ];
 
+function createColorCardsMarup(colors) {
+    const markup = colors.map(color => {
+        return
+        ` <div class="color-card"> 
+            <div class="color-swatch" 
+            data-hex="#955014" 
+            data-rgb="149,80,20" 
+            style="background-color: #955014">
+        </div>
+        <div class="color-meta">
+            <p>HEX: #955014</p>
+            <p>RGB: 149,80,20</p>
+        </div>
+        </div>
+    `
+    });
+    console.log(markup);
 
+  
+}
 
 
 
