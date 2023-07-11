@@ -27,8 +27,8 @@ paletteContainer.addEventListener('click', onPaletteContainerClick);
 function createColorCardsMarkup(colors) {
     return colors
         .map(({ hex, rgb }) => {
-        return
-        ` <div class="color-card"> 
+        return ` 
+        <div class="color-card"> 
             <div class="color-swatch" 
             data-hex="${hex}" 
             data-rgb="${rgb}" 
@@ -47,25 +47,67 @@ function createColorCardsMarkup(colors) {
 
 // ми хочем відстежити кліки тільки в колір
 function onPaletteContainerClick(event) {
-    // console.log(event.target);
+    // console.log(event.target);    
     // якщо це НЕ елемент color-swatch, то ми виходимо, інакше- виконується код
-    if (!event.target.classlist.contains('color-swatch')) {
+    // можна зробити змінну і винести тудп event.target.classlist.contains('color-swatch')
+    const isColorSwatchEl = event.target.classList.contains('color-swatch');
+    if (!isColorSwatchEl) {
         return;
     }
 
-    const swatchEl = event.target;
+    // const swatchEl = event.target;
+    // так класс додавсян на color-swatch
     // swatchEl.classlist.add('is-active');
+    // а повинен додаватися на color-card
     // родителя искать не очень практично, нужно искать предка
     // в єтом поможет метод closest('.')
-    const parentColorCard = swatchEl.closest('.color-card');
+    // const parentColorCard = swatchEl.closest('.color-card');
+// console.log(parentColorCard);
+// це зовнішня функція- вона знаходиться нижче - ми не неї замінили весь код, що закоментований
+removeActiveCardClass();
+    // спочатку такий елемент знаходим
+    // const currentActiveCard = document.querySelector('.color-card.is-active');
+    // коли знайшли- видаляємо is-active спочатку
+// соли ми знайшли предка, НЕ батька, додаємо класс is-active
+    // parentColorCard.classlist.add('is-active');
 
-    parentColorCard.classlist.add('is-active');
-    
+    // але клас is-active треба зняти з попереднього і додати на наступний
+
+    // if(currentActiveCard) {
+    //     currentActiveCard.classList.remove('is-active');
+    // }
+    // а потім робимо активни наступний елемент
+    const swatchEl = event.target;
+    const parentColorCard = swatchEl.closest('.color-card');
+    addActiveCardClass(parentColorCard);
+    // додавання класу також винесли в окрему функцію
+    // parentColorCard.classList.add('is-active');
+    // зробимо бекгроунд такого ж кольору, як активний
+    // document.body.style.backgroundColor = swatchEl.dataset.hex;
+    // замінимо її на зовнішню фукнкцію строка 91
+    setBodyBgColor(swatchEl.dataset.hex);
     // console.log(event.targetdataset.hex);
 
 }
 
+function setBodyBgColor (color) {
+    document.body.style.backgroundColor = color;
+}
 
+// винесемо в окрему функцію і зняття активного класу 
+function removeActiveCardClass (){
+    const currentActiveCard = document.querySelector('.color-card.is-active');
+    
+    if(currentActiveCard) {
+        currentActiveCard.classList.remove('is-active');
+    }
+
+}
+// зробим функцію додавання активного классу також окремою
+
+function addActiveCardClass (card) {
+card.classList.add('is-active');
+}
 
 
 
